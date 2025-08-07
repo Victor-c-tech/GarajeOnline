@@ -1,14 +1,12 @@
-/* Estilos Base */
 body {
     padding-top: 70px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header y Navegación (sin cambios) */
-.navbar .nav-link i,
-.download-app-btn i {
+.navbar .nav-link i, .download-app-btn i {
     margin-right: 8px;
 }
+
 .header-background {
     background-image: url('https://wallpapers.com/images/hd/4k-car-3840-x-2160-background-gb3fbmkg0vzkcrfp.jpg');
     background-size: cover;
@@ -21,44 +19,31 @@ body {
     z-index: -1;
     filter: brightness(0.5);
 }
+
 #inicio {
     color: white;
     position: relative;
     z-index: 1;
 }
 
-/* ================================================= */
-/* ====== MODIFICACIÓN 1: NUEVO FONDO OSCURO ======= */
-/* ================================================= */
 #vehiculos {
-    background-image: url('https://i.pinimg.com/474x/1d/65/cc/1d65cc9ce3375d8fe3a993b90a7d41b6.jpg'); /* 1. Usamos nuestra imagen */
-    background-size: cover;                     /* 2. Hacemos que cubra todo el espacio */
-    background-position: center center;         /* 3. La centramos */
-    background-attachment: fixed;               /* 4. Efecto Parallax (el fondo no se mueve con el scroll) */
+    background-image: url('https://i.pinimg.com/474x/1d/65/cc/1d65cc9ce3375d8fe3a993b90a7d41b6.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
-/* Hacemos el título de la sección legible sobre el nuevo fondo */
 #vehiculos h2 {
     color: #ffffff;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-/* ================================================= */
 
-
-/* ========================================================== */
-/* ====== MODIFICACIÓN 2: ESTILO DE TARJETAS "DE VIDRIO" ====== */
-/* ========================================================== */
 .card {
-    /* Fondo semi-transparente y desenfocado */
     background: rgba(10, 10, 10, 0.55);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
-    
-    /* Borde sutil para definir los límites */
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    
-    /* Mantenemos la sombra y la transición */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -68,7 +53,6 @@ body {
     box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Cambiamos el color del texto dentro de la tarjeta a blanco */
 .card-body, .card-title, .card-text, .h5 {
     color: #ffffff;
 }
@@ -94,37 +78,41 @@ body {
 }
 
 .card-text.description {
-    min-height: 3.5em; 
+    min-height: 3.5em;
 }
 
 .card-footer-wrapper {
     margin-top: auto;
 }
 
-/* ... (El resto de los estilos permanecen igual) ... */
 #download-app-section {
     background: linear-gradient(45deg, #0d6efd, #0dcaf0);
     padding: 4rem 0;
 }
+
 .download-app-btn {
     padding: 12px 24px;
     font-weight: bold;
 }
+
 #cartCount {
     animation: pulse 1.5s infinite;
 }
+
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
+
 .cart-item {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #444; /* Borde más oscuro para el modal */
+    border-bottom: 1px solid #444;
 }
+
 .cart-item-img {
     width: 80px;
     height: 60px;
@@ -132,12 +120,31 @@ body {
     margin-right: 1rem;
     border-radius: 5px;
 }
+
 .cart-item-details {
     flex-grow: 1;
 }
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    padding: 0.2rem 0.5rem;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.remove-item-btn:hover {
+    color: #a71d2a;
+    transform: scale(1.2);
+}
+
 #detailsModalBody .table {
     margin-bottom: 0;
 }
+
 #detailsModalBody .table td:first-child {
     font-weight: bold;
     width: 30%;
