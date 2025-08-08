@@ -72,17 +72,74 @@
         <p class="mb-0">&copy; 2024 Garage Online. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Modal: Detalles del Vehículo -->
+    <!-- Modals -->
     <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="detailsModalLabel">Detalles del Vehículo</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body" id="detailsModalBody"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div></div></div></div>
-    <!-- Modal: Seleccionar Cantidad -->
     <div class="modal fade" id="quantityModal" tabindex="-1" aria-labelledby="quantityModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quantityModalLabel">Seleccionar Cantidad</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><p>¿Cuántas unidades deseas añadir?</p><input type="number" id="quantityInput" class="form-control" value="1" min="1"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" id="addToCartBtnModal" class="btn btn-primary">Añadir al Carrito</button></div></div></div></div>
-    <!-- Modal: Carrito de Compras -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div id="cartItems"><p>El carrito está vacío.</p></div><hr><div class="text-end"><h4>Total: <span id="cartTotal" class="fw-bold">€0.00</span></h4></div></div><div class="modal-footer justify-content-between"><button type="button" id="clearCartBtn" class="btn btn-danger">Vaciar Carrito</button><div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Viendo</button><button type="button" id="checkoutBtn" class="btn btn-success">Pagar</button></div></div></div></div></div>
-    <!-- Modal: Formulario de Pago -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="paymentModalLabel">Formulario de Pago</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><form id="paymentForm"><div class="mb-3"><label for="customerName" class="form-label">Nombre Completo</label><input type="text" class="form-control" id="customerName" required></div><div class="mb-3"><label for="cardNumber" class="form-label">Número de Tarjeta</label><input type="text" class="form-control" id="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" required></div></form></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" id="processPaymentBtn" class="btn btn-primary">Procesar Pago</button></div></div></div></div>
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Finalizar Compra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-card-tab" data-bs-toggle="pill" data-bs-target="#pills-card" type="button" role="tab" aria-controls="pills-card" aria-selected="true">
+                                <i class="fas fa-credit-card"></i> Tarjeta de Crédito/Débito
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-paypal-tab" data-bs-toggle="pill" data-bs-target="#pills-paypal" type="button" role="tab" aria-controls="pills-paypal" aria-selected="false">
+                                <i class="fab fa-paypal"></i> PayPal
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-card" role="tabpanel" aria-labelledby="pills-card-tab">
+                            <form id="paymentForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="customerName" class="form-label">Nombre del titular</label>
+                                    <input type="text" class="form-control" id="customerName" placeholder="Nombre completo como aparece en la tarjeta" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                                    <input type="text" class="form-control" id="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cardExpiry" class="form-label">Fecha de Expiración</label>
+                                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])\/\d{2}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cardCVC" class="form-label">CVC/CVV</label>
+                                        <input type="text" class="form-control" id="cardCVC" placeholder="123" pattern="\d{3,4}" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="pills-paypal" role="tabpanel" aria-labelledby="pills-paypal-tab">
+                            <div class="text-center p-4">
+                                <p>Al hacer clic en "Procesar Pago", se simulará una compra segura a través de PayPal.</p>
+                                <i class="fab fa-paypal fa-4x text-primary"></i>
+                                <p class="text-muted mt-2"><small>(Esto es una simulación. No se requiere una cuenta de PayPal real)</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="processPaymentBtn" class="btn btn-success">
+                        <i class="fas fa-lock"></i> Procesar Pago
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
