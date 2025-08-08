@@ -178,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Posicionamiento del texto junto al logo dibujado
         doc.setFontSize(26); doc.setFont("helvetica", "bold"); doc.text("Garage Online", 50, 25);
-        doc.setFontSize(10); doc.setFont("helvetica", "normal"); doc.text("Calle Ficticia 123, Ciudad Auto", 50, 32);
-        doc.text("info@garageonline.com | +1 (800) 123-4567", 50, 37);
+        doc.setFontSize(10); doc.setFont("helvetica", "normal"); doc.text("Calle Los Beisbilista #23, Ciudad Hato Nuevo de Manoguayabo", 50, 32);
+        doc.text("info@garageonline.com | +1 (809) 123-4567", 50, 37);
         
         doc.setFontSize(18); doc.text("FACTURA", 195, 25, { align: 'right' });
         doc.setFontSize(10); doc.text(`Nº Factura: ${invoiceNumber}`, 195, 32, { align: 'right' });
@@ -286,3 +286,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadVehicles();
     updateCartUI();
 });
+
